@@ -1,13 +1,13 @@
 Pipeline {
 	agent any
 		stages{
-			stage ('scm checkout'){
+			stage('scm checkout'){
 			git 'https://github.com/vivekdhake/maven-project'
-			
+			}
 			
 			stage('compile stage'){
 				steps{ 
-				withmaven (maven: 'LocalMaven'){
+				withmaven (maven : 'LocalMaven'){
 				sh 'mvn compile'
 			   }
 			  }
@@ -15,7 +15,7 @@ Pipeline {
 			 
 			 stage('testing stage'){
 			  steps{ 
-			  withmaven (maven: 'LocalMaven'){
+			  withmaven (maven : 'LocalMaven'){
 			  sh 'mvn test'
 			   }
 			  }	   
@@ -23,7 +23,7 @@ Pipeline {
 			 
 			  stage('package stage'){
 				steps {
-					withmaven (maven: 'LocalMaven')
+					withmaven (maven : 'LocalMaven')
 					sh 'mvn package'
 					}
 				}
@@ -31,7 +31,7 @@ Pipeline {
 			 
 			 stage('install stage'){
 				steps {
-					withmaven (maven: 'LocalMaven'){
+					withmaven (maven : 'LocalMaven'){
 					sh 'mvn install'
 					}
 				}
