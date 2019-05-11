@@ -1,5 +1,5 @@
 Pipeline {
-	any node
+	agent any
 		stages{
 			stage ('scm checkout'){
 			git 'https://github.com/vivekdhake/maven-project.git'
