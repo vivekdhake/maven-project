@@ -2,7 +2,7 @@ Pipeline {
 	agent any
 		stages{
 			stage ('scm checkout'){
-			git 'https://github.com/vivekdhake/maven-project.git'
+			git 'https://github.com/vivekdhake/maven-project'
 			
 			
 			stage('compile stage'){
