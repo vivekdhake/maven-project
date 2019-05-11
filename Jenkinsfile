@@ -3,7 +3,7 @@ Pipeline {
 		stages{
 			stage ('scm checkout'){
 			git 'https://github.com/vivekdhake/maven-project.git'
-			}
+			
 			
 			stage('compile stage'){
 				steps{ 
