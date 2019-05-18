@@ -40,6 +40,7 @@ pipeline {
          steps{
              withMaven(maven:'LocalMaven'){
              withSonar(clean install sonar : 'sonar'){
+             sh mvn 'clean install sonar:sonar'
         }
       }
     }
