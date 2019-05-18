@@ -38,8 +38,8 @@ pipeline {
    stage('install source code on sonarcube'){
 
          steps{
-             withmaven (maven:'localmaven'){
-             withsonar (clean install sonar:sonar){
+             withMaven (maven:'localmaven'){
+             withSonar (clean install sonar:sonar){
         }
       }
     }
