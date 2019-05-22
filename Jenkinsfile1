@@ -1,49 +1,24 @@
 pipeline {
     agent any
-
-
-    stages {
-        stage('SCM Checkout'){
-          git 'https://github.com/vivekdhake/maven-project.git'
-        }
-  }
-    {
-        stage ('Compile Stage') {
-
-            steps {
-                withMaven(maven : 'LocalMaven') {
+          stages {
+            stage ('git scm'){
+                git 'https://github.com/vivekdhake/maven-project.git'
+                }
+              }
+             {
+              stage ('compile stage'){
+                steps{
+                    withMaven(maven : 'LocalMaven'){
                     sh 'mvn clean compile'
-                }
+                    }
+                  }
+                 }
+             stage ('package stage'){
+                steps{
+                    withMaven(maven : 'LocalMaven'){
+                    sh 'mvn clean compile'
+                    }
+                  }
+                 }
+             }
             }
-        }
-
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn test'
-                }
-            }
-        }
-
-
-        stage ('install Stage') {
-            steps {
-                withMaven(maven : 'LocalMaven') {
-                    sh 'mvn install'
-                }
-            }
-        } 
-      
-   stage('install source code on sonarcube'){
-
-         steps{
-             withMaven(maven:'LocalMaven'){
-             withSonar(clean install sonar : 'sonar'){
-             sh mvn 'clean install sonar:sonar'
-        }
-      }
-    }
-         
-}
-}
